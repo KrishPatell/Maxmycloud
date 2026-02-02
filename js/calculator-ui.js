@@ -25,10 +25,47 @@ document.addEventListener('DOMContentLoaded', function() {
     let calculationResults = null;
 
     /**
+     * Send height update to parent window (for iframe auto-resize)
+     */
+    function updateIframeHeight() {
+        if (window.parent !== window) {
+            const height = Math.max(
+                document.body.scrollHeight,
+                document.body.offsetHeight,
+                document.documentElement.clientHeight,
+                document.documentElement.scrollHeight,
+                document.documentElement.offsetHeight
+            );
+            window.parent.postMessage({
+                type: 'calculator-height',
+                height: height
+            }, '*');
+        }
+    }
+
+    /**
      * Initialize event listeners
      */
     function init() {
         console.log('Initializing calculator UI...');
+        
+        // Update height on window resize
+        window.addEventListener('resize', () => {
+            setTimeout(updateIframeHeight, 100);
+        });
+        
+        // Listen for height requests from parent
+        window.addEventListener('message', function(event) {
+            if (event.data && event.data.type === 'request-height') {
+                updateIframeHeight();
+            }
+        });
+        
+        // Initial height update
+        setTimeout(updateIframeHeight, 500);
+        
+        // Make function globally accessible
+        window.updateIframeHeight = updateIframeHeight;
 
         // Navigation buttons
         const nextButtons = document.querySelectorAll('.btn-next');
@@ -178,6 +215,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 calcStep.classList.remove('active');
             }
         });
+        
+        // Update iframe height after step change
+        setTimeout(updateIframeHeight, 100);
+        
         console.log('goToStep completed');
     }
 
@@ -244,6 +285,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Announce to screen readers
         announceResults(calculationResults);
+        
+        // Update iframe height after results displayed
+        setTimeout(() => {
+            updateIframeHeight();
+            // Update again after charts render
+            setTimeout(updateIframeHeight, 500);
+        }, 100);
     }
 
     /**
@@ -253,6 +301,7 @@ document.addEventListener('DOMContentLoaded', function() {
         form.classList.add('hidden');
         analyzingState.classList.remove('hidden');
         resultsContainer.classList.add('hidden');
+        updateIframeHeight();
 
         const messages = [
             'Scanning warehouse metadata patterns...',
@@ -293,6 +342,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function hideAnalyzing() {
         analyzingState.classList.add('hidden');
         resultsContainer.classList.remove('hidden');
+        setTimeout(updateIframeHeight, 100);
 
         // Reset progress for next use
         setTimeout(() => {

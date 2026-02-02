@@ -1,0 +1,68 @@
+<!-- 
+  COPY THIS CODE INTO WEBFLOW EMBED ELEMENT
+  This creates a responsive iframe that auto-adjusts height
+-->
+
+<div style="position: relative; width: 100%; min-height: 800px; overflow: hidden;">
+    <iframe 
+        id="calculator-iframe"
+        src="https://maxmycloud.vercel.app/"
+        width="100%" 
+        height="800"
+        frameborder="0"
+        scrolling="no"
+        style="border: none; display: block; width: 100%; transition: height 0.3s ease-out;"
+        title="Snowflake Cost Savings Calculator"
+        allow="clipboard-read; clipboard-write"
+    ></iframe>
+</div>
+
+<script>
+(function() {
+    const iframe = document.getElementById('calculator-iframe');
+    const wrapper = iframe.parentElement;
+    let currentHeight = 800;
+    
+    // Listen for height updates from calculator
+    window.addEventListener('message', function(event) {
+        // Optional: Verify origin for security
+        // if (event.origin !== 'https://maxmycloud.vercel.app') return;
+        
+        if (event.data && event.data.type === 'calculator-height') {
+            const newHeight = event.data.height;
+            const paddedHeight = Math.max(newHeight + 50, 800);
+            
+            if (paddedHeight !== currentHeight) {
+                currentHeight = paddedHeight;
+                iframe.style.height = paddedHeight + 'px';
+                wrapper.style.minHeight = paddedHeight + 'px';
+            }
+        }
+    });
+    
+    // Request height when iframe loads
+    iframe.addEventListener('load', function() {
+        setTimeout(() => {
+            iframe.contentWindow.postMessage({ type: 'request-height' }, '*');
+        }, 500);
+    });
+    
+    // Fallback: Request height on window resize
+    let resizeTimeout;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            if (iframe.contentWindow) {
+                iframe.contentWindow.postMessage({ type: 'request-height' }, '*');
+            }
+        }, 300);
+    });
+    
+    // Periodic height check (fallback)
+    setInterval(() => {
+        if (iframe.contentWindow) {
+            iframe.contentWindow.postMessage({ type: 'request-height' }, '*');
+        }
+    }, 2000);
+})();
+</script>

@@ -15,6 +15,11 @@ class SnowflakeCharts {
     this.renderWaterfallChart(results);
     this.renderEfficiencyGauge(results);
     this.renderWasteDonut(results);
+    
+    // Update iframe height after charts render
+    if (window.parent !== window && typeof updateIframeHeight === 'function') {
+      setTimeout(updateIframeHeight, 300);
+    }
   }
 
   /**

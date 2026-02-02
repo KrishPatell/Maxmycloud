@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snowflake Calculator - Responsive Iframe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: transparent;
+        }
+        
+        .iframe-wrapper {
+            position: relative;
+            width: 100%;
+            min-height: 800px;
+            overflow: hidden;
+        }
+        
+        .calculator-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+            transition: height 0.3s ease-out;
+        }
+        
+        /* Loading state */
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 800px;
+            color: #666;
+        }
+        
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .iframe-wrapper {
+                min-height: 600px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="iframe-wrapper">
+        <div class="loading" id="loading">Loading calculator...</div>
+        <iframe 
+            id="calculator-iframe"
+            class="calculator-iframe"
+            src="https://maxmycloud.vercel.app/"
+            width="100%" 
+            height="800"
+            frameborder="0"
+            scrolling="no"
+            style="display: none;"
+            title="Snowflake Cost Savings Calculator"
+            allow="clipboard-read; clipboard-write"
+        ></iframe>
+    </div>
+
+    <script>
+        const iframe = document.getElementById('calculator-iframe');
+        const loading = document.getElementById('loading');
+        const wrapper = document.querySelector('.iframe-wrapper');
+        
+        // Set initial height
+        let currentHeight = 800;
+        
+        // Listen for height updates from calculator
+        window.addEventListener('message', function(event) {
+            // Security: Verify origin (optional but recommended)
+            // if (event.origin !== 'https://maxmycloud.vercel.app') return;
+            
+            if (event.data && event.data.type === 'calculator-height') {
+                const newHeight = event.data.height;
+                
+                // Add some padding for better UX
+                const paddedHeight = Math.max(newHeight + 50, 800);
+                
+                if (paddedHeight !== currentHeight) {
+                    currentHeight = paddedHeight;
+                    iframe.style.height = paddedHeight + 'px';
+                    wrapper.style.minHeight = paddedHeight + 'px';
+                    
+                    // Hide loading, show iframe
+                    if (loading.style.display !== 'none') {
+                        loading.style.display = 'none';
+                        iframe.style.display = 'block';
+                    }
+                }
+            }
+        });
+        
+        // Handle iframe load
+        iframe.addEventListener('load', function() {
+            // Request initial height
+            setTimeout(() => {
+                iframe.contentWindow.postMessage({ type: 'request-height' }, '*');
+            }, 500);
+            
+            // Hide loading after a delay
+            setTimeout(() => {
+                loading.style.display = 'none';
+                iframe.style.display = 'block';
+            }, 1000);
+        });
+        
+        // Fallback: Update height on window resize
+        let resizeTimeout;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                iframe.contentWindow.postMessage({ type: 'request-height' }, '*');
+            }, 300);
+        });
+        
+        // Request height update periodically (fallback)
+        setInterval(() => {
+            if (iframe.contentWindow) {
+                iframe.contentWindow.postMessage({ type: 'request-height' }, '*');
+            }
+        }, 2000);
+    </script>
+</body>
+</html>
