@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snowflake Cost Savings Calculator | MaxMyCloud</title>
+    <meta name="description" content="Calculate your potential Snowflake savings in 60 seconds. See how much you can save with MaxMyCloud's optimization platform. No credit card required.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles/calculator.css">
+</head>
+<body>
+    <!-- Calculator Hero Section -->
+    <section class="calculator-hero" id="calculator">
+        <div class="container">
+            <div class="hero-content">
+                <!-- Calculator Container -->
+                <div class="calculator-container">
+                    <!-- Step Indicator (2 steps only) -->
+                    <div class="step-indicator">
+                        <div class="step active" data-step="1">
+                            <div class="step-number">1</div>
+                            <div class="step-label">Spend</div>
+                        </div>
+                        <div class="step" data-step="2">
+                            <div class="step-number">2</div>
+                            <div class="step-label">Infrastructure</div>
+                        </div>
+                    </div>
+
+                    <!-- Calculator Form -->
+                    <form id="savings-calculator" class="calculator-form" novalidate>
+                        <!-- Step 1: Monthly Spend -->
+                        <div class="calc-step active" data-step="1">
+                            <h2 class="step-title">What's your current monthly Snowflake spend?</h2>
+
+                            <div class="input-wrapper">
+                                <label for="monthly-spend" class="sr-only">Monthly Snowflake spend in USD</label>
+                                <div class="input-group">
+                                    <span class="input-prefix">$</span>
+                                    <input
+                                        type="text"
+                                        id="monthly-spend"
+                                        name="monthlySpend"
+                                        placeholder="25,000"
+                                        inputmode="decimal"
+                                        autocomplete="off"
+                                        aria-describedby="spend-helper"
+                                        required
+                                    >
+                                </div>
+                                <p id="spend-helper" class="input-helper">Enter your average monthly Snowflake bill</p>
+                                <div class="error-message" id="monthly-spend-error" role="alert"></div>
+                            </div>
+
+                            <div class="or-divider">
+                                <span>OR</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="spend-range" class="form-label">Select a range:</label>
+                                <select id="spend-range" name="spendRange">
+                                    <option value="">Choose range...</option>
+                                    <option value="5000">$5K - $10K/month</option>
+                                    <option value="15000">$10K - $25K/month</option>
+                                    <option value="50000">$25K - $75K/month</option>
+                                    <option value="125000">$75K - $200K/month</option>
+                                    <option value="350000">$200K - $500K/month</option>
+                                    <option value="750000">$500K - $1M/month</option>
+                                    <option value="2500000">$1M+/month</option>
+                                </select>
+                            </div>
+
+                            <button type="button" class="btn-primary btn-full btn-next" data-next="2">
+                                Continue →
+                            </button>
+
+                            <button type="button" class="btn-link skip-btn" data-skip-to="calculate">
+                                Skip to calculation
+                            </button>
+                        </div>
+
+                        <!-- Step 2: Infrastructure Details (SLIDERS - GEMINI SPEC) -->
+                        <div class="calc-step" data-step="2">
+                            <h2 class="step-title">Configure Your Infrastructure</h2>
+                            <p class="step-subtitle">Help us understand your Snowflake environment</p>
+
+                            <!-- Number of Warehouses -->
+                            <div class="form-group">
+                                <label for="warehouse-count" class="form-label">Number of Active Warehouses</label>
+                                <input type="number" id="warehouse-count" name="warehouseCount"
+                                       min="1" max="100" value="5" class="input-field" />
+                            </div>
+
+                            <!-- Workload Type -->
+                            <div class="form-group">
+                                <label for="workload-type" class="form-label">Primary Workload Type</label>
+                                <select id="workload-type" name="workloadType" class="input-field">
+                                    <option value="etl">ETL/Data Loading</option>
+                                    <option value="adhoc">Ad-hoc Reporting</option>
+                                    <option value="bi">BI Dashboards</option>
+                                    <option value="datascience">Data Science</option>
+                                </select>
+                            </div>
+
+                            <!-- SLIDER 1: Provisioning Level -->
+                            <div class="form-group">
+                                <label class="form-label">Provisioning Level</label>
+                                <p class="slider-helper">How do you size your warehouses?</p>
+                                <div class="slider-container">
+                                    <input type="range" id="provisioning-slider" name="provisioningLevel"
+                                           min="1" max="5" value="3" step="1" class="efficiency-slider">
+                                    <div class="slider-labels">
+                                        <span>We run lean</span>
+                                        <span id="provisioning-value" class="slider-value">3</span>
+                                        <span>Always over-provision</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- SLIDER 2: Monitoring Maturity -->
+                            <div class="form-group">
+                                <label class="form-label">Monitoring Maturity</label>
+                                <p class="slider-helper">How governed is your Snowflake usage?</p>
+                                <div class="slider-container">
+                                    <input type="range" id="maturity-slider" name="maturityLevel"
+                                           min="1" max="5" value="3" step="1" class="efficiency-slider">
+                                    <div class="slider-labels">
+                                        <span>Wild West</span>
+                                        <span id="maturity-value" class="slider-value">3</span>
+                                        <span>Strictly Governed</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- SLIDER 3: Idle Time Intensity -->
+                            <div class="form-group">
+                                <label class="form-label">Idle Time Intensity</label>
+                                <p class="slider-helper">How long before warehouses suspend?</p>
+                                <div class="slider-container">
+                                    <input type="range" id="idle-slider" name="idleIntensity"
+                                           min="1" max="5" value="3" step="1" class="efficiency-slider">
+                                    <div class="slider-labels">
+                                        <span>Instant shutoff</span>
+                                        <span id="idle-value" class="slider-value">3</span>
+                                        <span>Always on (10+ min)</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Optional: Team Size -->
+                            <div class="form-group">
+                                <label for="team-size" class="form-label">Data Team Size (Optional)</label>
+                                <input type="number" id="team-size" name="teamSize"
+                                       min="1" max="500" placeholder="e.g., 15" class="input-field" />
+                            </div>
+
+                            <div class="btn-group">
+                                <button type="button" class="btn-secondary btn-back" data-back="1">← Back</button>
+                                <button type="button" class="btn-primary btn-calculate">Calculate Savings →</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Analyzing State (3-second animation - GEMINI SPEC) -->
+                    <div id="analyzing-state" class="analyzing-state hidden">
+                        <div class="analyzing-animation">
+                            <div class="pulse-circle"></div>
+                        </div>
+                        <p id="analyzing-message" class="analyzing-message">Scanning warehouse metadata patterns...</p>
+                        <div class="analyzing-progress">
+                            <div class="progress-bar" id="progress-bar"></div>
+                        </div>
+                    </div>
+
+                    <!-- Results Display (Chart.js Integration - GEMINI SPEC) -->
+                    <div id="results-container" class="results hidden">
+                        <h2 class="results-title">Your Snowflake Optimization Analysis</h2>
+
+                        <!-- Summary Cards -->
+                        <div class="summary-grid">
+                            <div class="summary-card">
+                                <div class="summary-label">Current Monthly Spend</div>
+                                <div class="summary-value" id="current-spend">$0</div>
+                            </div>
+                            <div class="summary-card highlight">
+                                <div class="summary-label">Estimated Monthly Savings</div>
+                                <div class="summary-value" id="savings-amount">$0</div>
+                                <div class="summary-sub" id="savings-percentage">(0% reduction)</div>
+                            </div>
+                            <div class="summary-card">
+                                <div class="summary-label">Annual Impact</div>
+                                <div class="summary-value" id="annual-savings">$0</div>
+                            </div>
+                        </div>
+
+                        <!-- Waterfall Chart -->
+                        <div class="chart-container">
+                            <h3>Savings Waterfall</h3>
+                            <canvas id="waterfall-chart" height="300"></canvas>
+                        </div>
+
+                        <!-- Two-Column Layout: Gauge + Donut -->
+                        <div class="charts-row">
+                            <div class="gauge-container">
+                                <h3>Efficiency Score</h3>
+                                <canvas id="efficiency-gauge"></canvas>
+                                <p id="efficiency-label" class="gauge-label">0/100</p>
+                            </div>
+
+                            <div class="chart-container">
+                                <h3>Cost Waste Distribution</h3>
+                                <canvas id="waste-donut"></canvas>
+                            </div>
+                        </div>
+
+                        <!-- Dynamic Insights (Slider-Based) -->
+                        <div class="results-insights" id="insights-container">
+                            <h3 class="insights-title">📊 Optimization Opportunities</h3>
+                            <div id="insights-list" class="insights-list">
+                                <!-- Populated by JS based on slider values -->
+                            </div>
+                        </div>
+
+                        <!-- Executive Summary -->
+                        <div class="executive-summary" id="executive-summary">
+                            <!-- Populated by JS -->
+                        </div>
+
+                        <!-- Lead Gate: Blurred Detailed Breakdown -->
+                        <div class="locked-section">
+                            <div class="blur-overlay">
+                                <h3>Detailed 90-Day Savings Roadmap</h3>
+                                <div class="placeholder-content">
+                                    <p><strong>Month 1:</strong> Infrastructure Right-Sizing</p>
+                                    <p>• Consolidate underutilized warehouses</p>
+                                    <p>• Implement auto-suspend policies</p>
+                                    <p>• Expected savings: 15-20%</p>
+                                    <br>
+                                    <p><strong>Month 2:</strong> Auto-Suspend Optimization</p>
+                                    <p>• Fine-tune suspend timings</p>
+                                    <p>• Implement usage monitoring</p>
+                                    <p>• Expected savings: Additional 10-15%</p>
+                                    <br>
+                                    <p><strong>Month 3:</strong> Query Performance Tuning</p>
+                                    <p>• Optimize expensive queries</p>
+                                    <p>• Implement clustering keys</p>
+                                    <p>• Expected savings: Additional 5-10%</p>
+                                    <div style="height: 150px; background: linear-gradient(180deg, #f0f0f0 0%, #e0e0e0 100%); margin-top: 20px; border-radius: 8px;"></div>
+                                </div>
+                            </div>
+                            <div class="unlock-overlay">
+                                <button class="btn-primary btn-large" id="btn-unlock-report">
+                                    🔓 Unlock Full PDF Report
+                                </button>
+                                <p class="unlock-subtitle">Enter your work email to receive the complete analysis</p>
+                            </div>
+                        </div>
+
+                        <div class="results-actions">
+                            <a href="https://calendly.com/maxmycloud/30min" class="btn-secondary" target="_blank">
+                                Book 30-Min Strategy Call
+                            </a>
+                        </div>
+
+                        <div class="results-guarantee">
+                            <p>💰 <strong>Guaranteed minimum 20% savings or you don't pay</strong></p>
+                            <p class="guarantee-sub">Typical savings: 30-50% reduction • Setup in under 30 minutes</p>
+                        </div>
+                    </div>
+
+                    <!-- Screen reader announcement -->
+                    <div id="results-announcement" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Email Capture Modal -->
+    <div id="email-modal" class="modal hidden" role="dialog" aria-labelledby="modal-title" aria-modal="true">
+        <div class="modal-backdrop" aria-hidden="true"></div>
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close modal" type="button">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
+
+            <h2 id="modal-title" class="modal-title">Get Your Detailed Savings Report</h2>
+            <p class="modal-subtitle">We'll send you a personalized PDF breakdown including:</p>
+
+            <ul class="modal-benefits">
+                <li>✓ Line-item savings opportunities by category</li>
+                <li>✓ 90-day implementation roadmap</li>
+                <li>✓ Expected ROI timeline</li>
+                <li>✓ Custom recommendations for your setup</li>
+            </ul>
+
+            <form id="email-capture-form" novalidate>
+                <div class="form-group">
+                    <label for="report-name" class="form-label">Full Name*</label>
+                    <input
+                        type="text"
+                        id="report-name"
+                        name="name"
+                        required
+                        aria-required="true"
+                        placeholder="John Smith"
+                    >
+                    <div class="error-message" id="name-error" role="alert"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="report-email" class="form-label">Business Email*</label>
+                    <input
+                        type="email"
+                        id="report-email"
+                        name="email"
+                        required
+                        aria-required="true"
+                        aria-describedby="email-helper"
+                        placeholder="john@company.com"
+                    >
+                    <p id="email-helper" class="input-helper">Please use your work email (no Gmail, Yahoo, etc.)</p>
+                    <div class="error-message" id="email-error" role="alert"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="report-company" class="form-label">Company Name</label>
+                    <input
+                        type="text"
+                        id="report-company"
+                        name="company"
+                        placeholder="Acme Corp"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="consultation" value="yes">
+                        <span class="checkbox-label">I'd like a 30-min consultation</span>
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-primary btn-full" id="btn-submit-report">
+                    Send My Report →
+                </button>
+
+                <p class="modal-trust">🔒 Your data is secure. No spam.</p>
+            </form>
+
+            <!-- Success State -->
+            <div id="email-success" class="email-success hidden">
+                <div class="success-icon">✓</div>
+                <h3>Report Sent!</h3>
+                <p>Check your inbox for your detailed Snowflake savings report.</p>
+                <p class="success-sub">We'll be in touch within 24 hours to discuss your optimization strategy.</p>
+                <button type="button" class="btn-primary" id="btn-close-success">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chart.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+    <!-- Calculator Scripts -->
+    <script src="js/form-validation.js"></script>
+    <script src="js/calculator-engine.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/calculator-ui.js"></script>
+</body>
+</html>
