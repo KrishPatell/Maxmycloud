@@ -17,8 +17,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const spendRangeSelect = document.getElementById('spend-range');
     const analyzingState = document.getElementById('analyzing-state');
     const resultsContainer = document.getElementById('results-container');
-    const emailModal = document.getElementById('email-modal');
-    const emailForm = document.getElementById('email-capture-form');
 
     // Current state
     let currentStep = 1;
@@ -103,30 +101,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Initialize sliders
         initSliders();
-
-        // Email modal
-        const unlockBtn = document.getElementById('btn-unlock-report');
-        if (unlockBtn) {
-            unlockBtn.addEventListener('click', openEmailModal);
-        }
-
-        document.querySelector('.modal-close').addEventListener('click', closeEmailModal);
-        document.querySelector('.modal-backdrop').addEventListener('click', closeEmailModal);
-        document.getElementById('btn-close-success').addEventListener('click', closeEmailModal);
-
-        // Email form submission
-        emailForm.addEventListener('submit', handleEmailSubmit);
-
-        // Real-time email validation
-        const emailInput = document.getElementById('report-email');
-        emailInput.addEventListener('blur', () => {
-            const result = validator.validate('email', emailInput.value);
-            if (!result.valid) {
-                validator.showError(emailInput, result.error);
-            } else {
-                validator.clearError(emailInput);
-            }
-        });
 
         // Format spend input with commas
         monthlySpendInput.addEventListener('blur', formatSpendInput);
@@ -461,107 +435,7 @@ document.addEventListener('DOMContentLoaded', function() {
         announcement.textContent = text;
     }
 
-    /**
-     * Open email capture modal
-     */
-    function openEmailModal() {
-        emailModal.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-
-        // Focus on first input
-        setTimeout(() => {
-            document.getElementById('report-name').focus();
-        }, 100);
-    }
-
-    /**
-     * Close email capture modal
-     */
-    function closeEmailModal() {
-        emailModal.classList.add('hidden');
-        document.body.style.overflow = '';
-
-        // Reset form if success was shown
-        const successDiv = document.getElementById('email-success');
-        if (!successDiv.classList.contains('hidden')) {
-            successDiv.classList.add('hidden');
-            emailForm.classList.remove('hidden');
-            emailForm.reset();
-        }
-    }
-
-    /**
-     * Handle email form submission
-     */
-    async function handleEmailSubmit(e) {
-        e.preventDefault();
-
-        // Validate form
-        const nameInput = document.getElementById('report-name');
-        const emailInput = document.getElementById('report-email');
-
-        const nameResult = validator.validate('name', nameInput.value);
-        const emailResult = validator.validate('email', emailInput.value);
-
-        if (!nameResult.valid) {
-            validator.showError(nameInput, nameResult.error);
-            return;
-        }
-
-        if (!emailResult.valid) {
-            validator.showError(emailInput, emailResult.error);
-            return;
-        }
-
-        // Gather form data
-        const formData = {
-            name: nameInput.value,
-            email: emailInput.value,
-            company: document.getElementById('report-company').value,
-            consultation: document.querySelector('input[name="consultation"]:checked')?.value || 'no',
-            calculatorData: calculationResults
-        };
-
-        // Disable submit button
-        const submitBtn = document.getElementById('btn-submit-report');
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending...';
-
-        try {
-            // Submit to Formspree
-            const response = await fetch('https://formspree.io/f/xvgqlgyo', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    name: formData.name,
-                    email: formData.email,
-                    company: formData.company,
-                    consultation: formData.consultation,
-                    monthlySpend: calculationResults.currentSpend,
-                    estimatedSavings: calculator.formatCurrency(calculationResults.monthlySavings),
-                    savingsRate: calculator.formatPercent(calculationResults.savingsRate),
-                    efficiencyScore: calculationResults.efficiencyScore,
-                    _subject: 'New Calculator Lead - Detailed Report Request'
-                })
-            });
-
-            if (response.ok) {
-                // Show success message
-                emailForm.classList.add('hidden');
-                document.getElementById('email-success').classList.remove('hidden');
-            } else {
-                throw new Error('Submission failed');
-            }
-        } catch (error) {
-            alert('There was an error submitting your request. Please try again or contact us directly at support@maxmycloud.com');
-            console.error('Form submission error:', error);
-        } finally {
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'Send My Report →';
-        }
-    }
+    // Email capture modal + submission logic removed.\n*** End Patch"}】 ***!
 
     /**
      * Format number with commas
