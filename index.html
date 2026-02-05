@@ -179,98 +179,102 @@
                     </div>
 
                     <!-- Results Display (Chart.js Integration - GEMINI SPEC) -->
-                    <div id="results-container" class="results hidden">
-                        <h2 class="results-title">Your Snowflake Optimization Analysis</h2>
+                    <div id="results-container" class="results hidden locked">
+                        <div class="results-body">
+                            <h2 class="results-title">Your Snowflake Optimization Analysis</h2>
 
-                        <!-- Summary Cards -->
-                        <div class="summary-grid">
-                            <div class="summary-card">
-                                <div class="summary-label">Current Monthly Spend</div>
-                                <div class="summary-value" id="current-spend">$0</div>
-                            </div>
-                            <div class="summary-card highlight">
-                                <div class="summary-label">Estimated Monthly Savings</div>
-                                <div class="summary-value" id="savings-amount">$0</div>
-                                <div class="summary-sub" id="savings-percentage">(0% reduction)</div>
-                            </div>
-                            <div class="summary-card">
-                                <div class="summary-label">Annual Impact</div>
-                                <div class="summary-value" id="annual-savings">$0</div>
-                            </div>
-                        </div>
-
-                        <!-- Waterfall Chart -->
-                        <div class="chart-container">
-                            <h3>Savings Waterfall</h3>
-                            <canvas id="waterfall-chart" height="300"></canvas>
-                        </div>
-
-                        <!-- Two-Column Layout: Gauge + Donut -->
-                        <div class="charts-row">
-                            <div class="gauge-container">
-                                <h3>Efficiency Score</h3>
-                                <canvas id="efficiency-gauge"></canvas>
-                                <p id="efficiency-label" class="gauge-label">0/100</p>
+                            <!-- Summary Cards -->
+                            <div class="summary-grid">
+                                <div class="summary-card">
+                                    <div class="summary-label">Current Monthly Spend</div>
+                                    <div class="summary-value" id="current-spend">$0</div>
+                                </div>
+                                <div class="summary-card highlight">
+                                    <div class="summary-label">Estimated Monthly Savings</div>
+                                    <div class="summary-value" id="savings-amount">$0</div>
+                                    <div class="summary-sub" id="savings-percentage">(0% reduction)</div>
+                                </div>
+                                <div class="summary-card">
+                                    <div class="summary-label">Annual Impact</div>
+                                    <div class="summary-value" id="annual-savings">$0</div>
+                                </div>
                             </div>
 
+                            <!-- Waterfall Chart -->
                             <div class="chart-container">
-                                <h3>Cost Waste Distribution</h3>
-                                <canvas id="waste-donut"></canvas>
+                                <h3>Savings Waterfall</h3>
+                                <canvas id="waterfall-chart" height="300"></canvas>
+                            </div>
+
+                            <!-- Two-Column Layout: Gauge + Donut -->
+                            <div class="charts-row">
+                                <div class="gauge-container">
+                                    <h3>Efficiency Score</h3>
+                                    <canvas id="efficiency-gauge"></canvas>
+                                    <p id="efficiency-label" class="gauge-label">0/100</p>
+                                </div>
+
+                                <div class="chart-container">
+                                    <h3>Cost Waste Distribution</h3>
+                                    <canvas id="waste-donut"></canvas>
+                                </div>
+                            </div>
+
+                            <!-- Dynamic Insights (Slider-Based) -->
+                            <div class="results-insights" id="insights-container">
+                                <h3 class="insights-title">📊 Optimization Opportunities</h3>
+                                <div id="insights-list" class="insights-list">
+                                    <!-- Populated by JS based on slider values -->
+                                </div>
+                            </div>
+
+                            <!-- Executive Summary -->
+                            <div class="executive-summary" id="executive-summary">
+                                <!-- Populated by JS -->
+                            </div>
+
+                            <div class="results-actions">
+                                <a href="https://calendly.com/maxmycloud/30min" class="btn-secondary" target="_blank">
+                                    Book 30-Min Strategy Call
+                                </a>
+                            </div>
+
+                            <div class="results-guarantee">
+                                <p>💰 <strong>Guaranteed minimum 20% savings or you don't pay</strong></p>
+                                <p class="guarantee-sub">Typical savings: 30-50% reduction • Setup in under 30 minutes</p>
                             </div>
                         </div>
 
-                        <!-- Dynamic Insights (Slider-Based) -->
-                        <div class="results-insights" id="insights-container">
-                            <h3 class="insights-title">📊 Optimization Opportunities</h3>
-                            <div id="insights-list" class="insights-list">
-                                <!-- Populated by JS based on slider values -->
-                            </div>
-                        </div>
-
-                        <!-- Executive Summary -->
-                        <div class="executive-summary" id="executive-summary">
-                            <!-- Populated by JS -->
-                        </div>
-
-                    <!-- Inline CTA: Customized PDF Report -->
-                    <div class="results-cta">
-                        <h3>Get your customized PDF report</h3>
-                        <p class="results-cta-sub">
-                            Includes your savings breakdown plus a Snowflake best-practices guide.
-                        </p>
-                        <form id="pdf-request-form" class="results-cta-form" novalidate>
-                            <div class="form-group">
-                                <label for="pdf-email" class="form-label">Work email</label>
-                                <input
-                                    type="email"
-                                    id="pdf-email"
-                                    name="email"
-                                    placeholder="you@company.com"
-                                    required
-                                    aria-required="true"
-                                    aria-describedby="pdf-email-helper"
-                                >
-                                <p id="pdf-email-helper" class="input-helper">
-                                    Business email only. No Gmail, Yahoo, etc.
+                        <!-- Lock overlay: email gate before viewing full results -->
+                        <div class="results-lock-overlay">
+                            <div class="results-cta">
+                                <h3>Get your customized PDF report</h3>
+                                <p class="results-cta-sub">
+                                    Includes your savings breakdown plus a Snowflake best-practices guide.
                                 </p>
-                                <div class="error-message" id="pdf-email-error" role="alert"></div>
+                                <form id="pdf-request-form" class="results-cta-form" novalidate>
+                                    <div class="form-group">
+                                        <label for="pdf-email" class="form-label">Work email</label>
+                                        <input
+                                            type="email"
+                                            id="pdf-email"
+                                            name="email"
+                                            placeholder="you@company.com"
+                                            required
+                                            aria-required="true"
+                                            aria-describedby="pdf-email-helper"
+                                        >
+                                        <p id="pdf-email-helper" class="input-helper">
+                                            Business email only. No Gmail, Yahoo, etc.
+                                        </p>
+                                        <div class="error-message" id="pdf-email-error" role="alert"></div>
+                                    </div>
+                                    <button type="submit" class="btn-primary btn-full">
+                                        Email me my PDF
+                                    </button>
+                                    <p class="results-cta-trust">🔒 Your data is secure. No spam.</p>
+                                </form>
                             </div>
-                            <button type="submit" class="btn-primary btn-full">
-                                Email me my PDF
-                            </button>
-                            <p class="results-cta-trust">🔒 Your data is secure. No spam.</p>
-                        </form>
-                    </div>
-
-                        <div class="results-actions">
-                            <a href="https://calendly.com/maxmycloud/30min" class="btn-secondary" target="_blank">
-                                Book 30-Min Strategy Call
-                            </a>
-                        </div>
-
-                        <div class="results-guarantee">
-                            <p>💰 <strong>Guaranteed minimum 20% savings or you don't pay</strong></p>
-                            <p class="guarantee-sub">Typical savings: 30-50% reduction • Setup in under 30 minutes</p>
                         </div>
                     </div>
 

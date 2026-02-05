@@ -397,6 +397,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // Scroll to results
         resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
+        // Ensure results start in locked state (email gate on)
+        resultsContainer.classList.add('locked');
+
         // Update URL so completed runs land on /calculator/results
         updateResultsUrl();
     }
@@ -515,6 +518,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     button.textContent = 'Report on its way ✔';
                     button.disabled = true;
                 }
+                // Unlock results view once email is captured
+                resultsContainer.classList.remove('locked');
             } else {
                 const errorText = 'There was an issue sending your report. Please try again.';
                 const errorEl = document.getElementById('pdf-email-error');
