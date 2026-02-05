@@ -866,7 +866,40 @@ select.error:focus {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-md);
+    margin-top: var(--spacing-xl);
     margin-bottom: var(--spacing-xl);
+}
+
+/* Results CTA (PDF form) */
+.results-cta {
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
+    text-align: left;
+}
+
+.results-cta-sub {
+    margin-top: var(--spacing-xs);
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text-secondary);
+}
+
+.results-cta-form {
+    max-width: 480px;
+}
+
+.results-cta-form .form-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.results-cta-form .btn-full {
+    margin-top: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+.results-cta-trust {
+    margin-top: var(--spacing-sm);
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
 }
 
 /* Results Guarantee */

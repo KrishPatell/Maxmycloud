@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SEO/AEO Proposal – MaxMyCloud</title>
+
+  <!-- Inter font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+:root {
+  --bns-bg: #0c0e12;
+  --bns-card-bg: #151821;
+  --bns-card-bg-soft: #191d24;
+  --bns-border: #272c35;
+  --bns-border-strong: #2b303b;
+  --bns-text: #f5f3f0;
+  --bns-text-muted: #818898;
+  --bns-pill-bg: rgba(33, 36, 44, 0.8);
+  --bns-gold-start: #dda73c;
+  --bns-gold-end: #edb25e;
+  --bns-radius-lg: 16px;
+  --bns-radius-md: 12px;
+  --bns-radius-full: 9999px;
+  --bns-shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.5);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background-color: var(--bns-bg);
+  color: var(--bns-text);
+}
+
+.bns-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 64px 16px 80px;
+  background: radial-gradient(
+      circle at 25% 0,
+      rgba(221, 167, 60, 0.1),
+      transparent 55%
+    ),
+    radial-gradient(
+      circle at 70% 100%,
+      rgba(237, 178, 94, 0.08),
+      transparent 55%
+    ),
+    var(--bns-bg);
+}
+
+.bns-hero {
+  width: 100%;
+  max-width: 1152px;
+  padding: 40px 24px 32px;
+}
+
+.bns-hero-inner {
+  max-width: 864px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.bns-brand-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.bns-logo-mark {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 30% 0,
+    var(--bns-gold-end),
+    var(--bns-gold-start)
+  );
+  box-shadow: 0 0 0 1px rgba(221, 167, 60, 0.4);
+}
+
+.bns-logo-text {
+  font-weight: 700;
+  font-size: 1.4rem;
+  letter-spacing: 0.03em;
+}
+
+.bns-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: var(--bns-radius-full);
+  background-color: var(--bns-pill-bg);
+  border: 1px solid var(--bns-border);
+  color: var(--bns-text-muted);
+  font-size: 0.8rem;
+  margin-bottom: 20px;
+}
+
+.bns-heading {
+  font-size: clamp(2.4rem, 4vw, 3.8rem);
+  line-height: 1.05;
+  letter-spacing: -0.05em;
+  margin: 0 0 16px;
+}
+
+.bns-heading-accent {
+  background-image: linear-gradient(
+    160deg,
+    var(--bns-gold-start),
+    var(--bns-gold-end)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.bns-subtitle {
+  max-width: 742px;
+  margin: 0 auto;
+  color: var(--bns-text-muted);
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.bns-main {
+  width: 100%;
+  max-width: 1152px;
+  padding: 16px 16px 0;
+}
+
+.bns-plans {
+  background: radial-gradient(
+      circle at top left,
+      rgba(221, 167, 60, 0.1),
+      transparent 55%
+    ),
+    rgba(12, 14, 18, 0.9);
+  border-radius: var(--bns-radius-lg);
+  border: 1px solid var(--bns-border-strong);
+  padding: 32px 20px 24px;
+  box-shadow: var(--bns-shadow-soft);
+}
+
+.bns-plans-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.bns-plan-card {
+  background: linear-gradient(
+    145deg,
+    rgba(25, 29, 36, 0.96),
+    rgba(17, 19, 24, 0.98)
+  );
+  border-radius: var(--bns-radius-lg);
+  border: 1px solid var(--bns-border-strong);
+  padding: 24px 24px 28px;
+}
+
+.bns-plan-card--highlight {
+  box-shadow: 0 0 0 1px rgba(221, 167, 60, 0.35),
+    0 26px 70px rgba(0, 0, 0, 0.7);
+}
+
+.bns-plan-header {
+  border-bottom: 1px solid var(--bns-border);
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.bns-plan-label {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.9rem;
+  color: var(--bns-text);
+  margin: 0 0 4px;
+}
+
+.bns-plan-name {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--bns-text-muted);
+}
+
+.bns-plan-price {
+  margin: 16px 0 6px;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 6px;
+}
+
+.bns-plan-price-main {
+  font-size: 2.4rem;
+  font-weight: 700;
+  background-image: linear-gradient(
+    135deg,
+    var(--bns-gold-start),
+    var(--bns-gold-end)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.bns-plan-price-meta {
+  font-size: 1rem;
+  color: var(--bns-text-muted);
+}
+
+.bns-plan-tagline {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--bns-text-muted);
+}
+
+.bns-plan-section {
+  margin-top: 18px;
+}
+
+.bns-section-title {
+  margin: 0 0 8px;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--bns-text);
+}
+
+.bns-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bns-list li {
+  position: relative;
+  padding-left: 22px;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--bns-text);
+}
+
+.bns-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0.3em;
+  font-size: 0.8rem;
+  color: var(--bns-gold-start);
+}
+
+.bns-list-note {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-style: italic;
+  color: var(--bns-text-muted);
+  margin-left: 4px;
+}
+
+.bns-cta-row {
+  margin-top: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+
+.bns-button {
+  border-radius: var(--bns-radius-full);
+  padding: 10px 22px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.18s ease, color 0.18s ease,
+    border-color 0.18s ease, transform 0.08s ease;
+}
+
+.bns-button--ghost {
+  background-color: rgba(33, 36, 44, 0.9);
+  border-color: var(--bns-border);
+  color: var(--bns-text);
+}
+
+.bns-button--ghost:hover {
+  background-color: rgba(39, 44, 53, 1);
+  transform: translateY(-1px);
+}
+
+.bns-button--primary {
+  background-image: linear-gradient(
+    135deg,
+    var(--bns-gold-start),
+    var(--bns-gold-end)
+  );
+  color: #121419;
+}
+
+.bns-button--primary:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+.bns-plan-price-note {
+  margin: 0;
+  margin-top: 4px;
+  font-size: 0.8rem;
+  color: var(--bns-text-muted);
+}
+
+.bns-section-heading {
+  margin: 32px 0 8px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.bns-section-lead {
+  margin: 0 0 16px;
+  color: var(--bns-text-muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.bns-subsection-title {
+  margin: 12px 0 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--bns-text-muted);
+}
+
+.bns-summary {
+  margin-top: 32px;
+  padding: 24px 20px 20px;
+  border-radius: var(--bns-radius-lg);
+  border: 1px solid var(--bns-border-strong);
+  background: linear-gradient(
+    145deg,
+    rgba(21, 24, 33, 0.96),
+    rgba(12, 14, 18, 0.98)
+  );
+}
+
+.bns-summary-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.bns-summary-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 640px;
+  font-size: 0.85rem;
+}
+
+.bns-summary-table th,
+.bns-summary-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--bns-border);
+  text-align: left;
+}
+
+.bns-summary-table th {
+  font-weight: 600;
+  color: var(--bns-text);
+  background-color: rgba(21, 24, 33, 0.9);
+}
+
+.bns-summary-table tbody tr:nth-child(even) td {
+  background-color: rgba(14, 16, 22, 0.8);
+}
+
+.bns-summary-table tbody tr:nth-child(odd) td {
+  background-color: rgba(10, 12, 18, 0.8);
+}
+
+.bns-timeline {
+  margin-top: 32px;
+}
+
+.bns-timeline-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.bns-timeline-card {
+  padding: 18px 16px 16px;
+  border-radius: var(--bns-radius-md);
+  border: 1px solid var(--bns-border-strong);
+  background-color: rgba(15, 18, 26, 0.95);
+}
+
+.bns-simple-list {
+  margin: 8px 0 0;
+  padding-left: 18px;
+  font-size: 0.85rem;
+  color: var(--bns-text);
+}
+
+.bns-simple-list li {
+  margin-bottom: 6px;
+  line-height: 1.6;
+}
+
+.bns-callout {
+  margin-top: 32px;
+  padding: 18px 18px 16px;
+  border-radius: var(--bns-radius-md);
+  border-left: 3px solid var(--bns-gold-start);
+  background: linear-gradient(
+    135deg,
+    rgba(25, 29, 36, 0.96),
+    rgba(15, 18, 26, 0.98)
+  );
+}
+
+.bns-callout-body {
+  margin: 4px 0 0;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--bns-text);
+}
+
+.bns-exclusions {
+  margin-top: 32px;
+}
+
+.bns-cta-final {
+  margin-top: 28px;
+  text-align: center;
+}
+
+.bns-cta-final .bns-button {
+  margin-top: 8px;
+}
+
+@media (max-width: 900px) {
+  .bns-plans-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bns-plans {
+    padding: 24px 16px 20px;
+  }
+
+  .bns-plan-card {
+    padding: 20px 18px 22px;
+  }
+}
+
+@media (max-width: 640px) {
+  .bns-page {
+    padding-top: 40px;
+  }
+
+  .bns-hero {
+    padding-inline: 12px;
+  }
+
+  .bns-main {
+    padding-inline: 12px;
+  }
+
+  .bns-heading {
+    font-size: 2.1rem;
+  }
+
+  .bns-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .bns-cta-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .bns-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .bns-summary-table {
+    min-width: 0;
+    font-size: 0.8rem;
+  }
+
+  .bns-timeline-grid {
+    grid-template-columns: 1fr;
+  }
+}
+  </style>
+</head>
+<body>
+  <div class="bns-page">
+    <header class="bns-hero">
+      <div class="bns-hero-inner">
+        <div class="bns-brand-row">
+          <div class="bns-logo-mark" aria-hidden="true"></div>
+          <span class="bns-logo-text">MaxMyCloud</span>
+        </div>
+
+        <div class="bns-pill">SEO/AEO Proposal</div>
+
+        <h1 class="bns-heading">
+          Your
+          <span class="bns-heading-accent">Growth</span>
+          Partner
+        </h1>
+
+        <p class="bns-subtitle">
+          Strategic SEO and AI search optimization to make MaxMyCloud the go-to alternative
+          when prospects search for Snowflake cost optimization solutions.
+        </p>
+      </div>
+    </header>
+
+    <main class="bns-main">
+      <!-- Two-tier pricing: Option A & Option B -->
+      <section class="bns-plans" aria-label="MaxMyCloud SEO/AEO proposal options">
+        <div class="bns-plans-grid">
+          <!-- Option A -->
+          <article class="bns-plan-card">
+            <header class="bns-plan-header">
+              <p class="bns-plan-label">Option A</p>
+              <p class="bns-plan-name">Foundation Package</p>
+              <p class="bns-plan-price">
+                <span class="bns-plan-price-main">$1,100</span>
+                <span class="bns-plan-price-meta">per month</span>
+              </p>
+              <p class="bns-plan-price-note">3-month minimum</p>
+            </header>
+
+            <section class="bns-plan-section">
+              <h3 class="bns-section-title">LLM &amp; AI Search Optimization</h3>
+              <ul class="bns-list">
+                <li>Target 6 key competitors</li>
+                <li>6 dedicated comparison pages</li>
+                <li>Schema markup implementation</li>
+                <li>G2, Capterra, Product Hunt, AlternativeTo listings</li>
+                <li>2 PR Newswire article placements</li>
+              </ul>
+            </section>
+
+            <section class="bns-plan-section">
+              <h3 class="bns-section-title">Strategy &amp; Research</h3>
+              <ul class="bns-list">
+                <li>Keyword research</li>
+                <li>Competitor analysis (6 competitors)</li>
+                <li>Content calendar</li>
+                <li>Monthly strategy updates</li>
+                <li>Technical SEO audit</li>
+                <li>Structured data implementation</li>
+                <li>PageSpeed Insights optimization</li>
+              </ul>
+            </section>
+
+            <section class="bns-plan-section">
+              <h3 class="bns-section-title">Content Creation</h3>
+              <ul class="bns-list">
+                <li>12 blog posts (1 per week, 1,500+ words)</li>
+                <li>5 product use case pages</li>
+                <li>5 programmatic comparison pages</li>
+                <li>5 competitor pages programmatic</li>
+                <li>Case studies</li>
+                <li>Content briefs for all deliverables</li>
+              </ul>
+            </section>
+
+            <section class="bns-plan-section">
+              <h3 class="bns-section-title">Link Building &amp; Authority</h3>
+              <ul class="bns-list">
+                <li>8&ndash;10 backlinks per month (24&ndash;30 total)</li>
+                <li>Directory submissions</li>
+                <li>Guest posts on data engineering/FinOps blogs</li>
+                <li>Reddit engagement (10&ndash;15 interactions/month)</li>
+                <li>LinkedIn thought leadership</li>
+              </ul>
+            </section>
+
+            <section class="bns-plan-section">
+              <h3 class="bns-section-title">Reporting &amp; Support</h3>
+              <ul class="bns-list">
+                <li>1-hour strategy call (kickoff)</li>
+                <li>Weekly progress calls</li>
+                <li>Monthly performance reports</li>
+                <li>Shared Slack channel</li>
+              </ul>
+            </section>
+
+          </article>
+
+          <!-- Option B -->
+          <article class="bns-plan-card bns-plan-card--highlight">
+            <header class="bns-plan-header">
+              <p class="bns-plan-label">Option B</p>
+              <p class="bns-plan-name">Growth Accelerator</p>
+              <p class="bns-plan-price">
+                <span class="bns-plan-price-main">$2,000</span>
+                <span class="bns-plan-price-meta">per month</span>
+              </p>
+              <p class="bns-plan-price-note">3-month minimum</p>
+            </header>
+
+            <section class="bns-plan-section">
+              <h3 class="bns-section-title">LLM &amp; AI Search Optimization</h3>
+              <ul class="bns-list">
+                <li>Target 12 competitors (6 primary + 6 secondary)</li>
+                <li>12 comparison pages</li>
+                <li>Advanced schema markup</li>
+                <li>3 PR Newswire articles (1/month)</li>
+                <li>Original research report</li>
+                <li>Weekly LLM testing</li>
+              </ul>
+            </section>
+
+            <section class="bns-plan-section">
+              <h3 class="bns-section-title">Strategy &amp; Research</h3>
+              <ul class="bns-list">
+                <li>Everything in Foundation</li>
+                <li>Weekly strategy calls (30 min)</li>
+                <li>Competitor monitoring alerts</li>
+                <li>Advanced Core Web Vitals optimization</li>
+              </ul>
+            </section>
+
+            <section class="bns-plan-section">
+              <h3 class="bns-section-title">Content Creation</h3>
+              <ul class="bns-list">
+                <li>20 blog posts (5/month for 3 months)</li>
+                <li>10 product use case pages</li>
+                <li>30 programmatic pages</li>
+                <li>3 infographics per month</li>
+                <li>Content syndication (Medium, Dev.to, Hashnode)</li>
+              </ul>
+            </section>
+
+            <section class="bns-plan-section">
+              <h3 class="bns-section-title">Link Building &amp; Authority</h3>
+              <ul class="bns-list">
+                <li>15&ndash;20 backlinks per month (45&ndash;60 total)</li>
+                <li>Guest posts on industry publications</li>
+                <li>Reddit engagement (20&ndash;30+ interactions/month)</li>
+                <li>Quora answers</li>
+              </ul>
+            </section>
+
+            <section class="bns-plan-section">
+              <h3 class="bns-section-title">Reporting &amp; Support</h3>
+              <ul class="bns-list">
+                <li>Weekly strategy calls (30 min)</li>
+                <li>Monthly performance reports</li>
+                <li>Priority Slack support (4-hour response)</li>
+              </ul>
+            </section>
+
+          </article>
+        </div>
+
+        <div class="bns-cta-row">
+          <button class="bns-button bns-button--ghost" type="button">
+            Choose Option A
+          </button>
+          <button class="bns-button bns-button--primary" type="button">
+            Choose Option B
+          </button>
+        </div>
+      </section>
+
+      <!-- Global comparison & supporting sections -->
+      <section class="bns-summary" aria-label="Deliverable summary comparison">
+        <h2 class="bns-section-heading">Deliverable Summary</h2>
+        <p class="bns-section-lead">
+          Side-by-side comparison of what you get with the Foundation Package versus the Growth Accelerator.
+        </p>
+
+        <div class="bns-summary-table-wrapper">
+          <table class="bns-summary-table">
+            <thead>
+              <tr>
+                <th>Deliverable</th>
+                <th>Option A: Foundation</th>
+                <th>Option B: Growth Accelerator</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Competitor comparison pages</td>
+                <td>6 pages</td>
+                <td>12 pages</td>
+              </tr>
+              <tr>
+                <td>Blog posts</td>
+                <td>12 (1/week)</td>
+                <td>20 (5/month initially)</td>
+              </tr>
+              <tr>
+                <td>Programmatic pages</td>
+                <td>5 comparison pages</td>
+                <td>30 pages (auto-generated, human-reviewed)</td>
+              </tr>
+              <tr>
+                <td>Use case pages</td>
+                <td>5 pages</td>
+                <td>10 pages</td>
+              </tr>
+              <tr>
+                <td>Backlinks per month</td>
+                <td>8&ndash;10 (24&ndash;30 total)</td>
+                <td>15&ndash;20 (45&ndash;60 total)</td>
+              </tr>
+              <tr>
+                <td>PR articles</td>
+                <td>2 total</td>
+                <td>3 (1/month)</td>
+              </tr>
+              <tr>
+                <td>Reddit engagement</td>
+                <td>10&ndash;15 interactions/month</td>
+                <td>20&ndash;30+ interactions/month</td>
+              </tr>
+              <tr>
+                <td>Strategy calls</td>
+                <td>Bi-weekly (15&ndash;20 min)</td>
+                <td>Weekly (30 min)</td>
+              </tr>
+              <tr>
+                <td>Schema implementation</td>
+                <td>Basic (Product, FAQ)</td>
+                <td>Advanced (Product, Review, HowTo)</td>
+              </tr>
+              <tr>
+                <td>Case studies</td>
+                <td>Included</td>
+                <td>Extended case studies</td>
+              </tr>
+              <tr>
+                <td>LLM testing</td>
+                <td>Weekly</td>
+                <td>Weekly</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="bns-timeline" aria-label="Timeline & expectations">
+        <h2 class="bns-section-heading">Timeline &amp; Expectations</h2>
+
+        <div class="bns-timeline-grid">
+          <article class="bns-timeline-card">
+            <h3 class="bns-subsection-title">Months 1&ndash;2: Foundation Building</h3>
+            <ul class="bns-simple-list">
+              <li><strong>Option A:</strong> 6 comparison pages live, technical SEO fixes implemented, schema deployed, 8 blog posts published, first PR article distributed, 16&ndash;20 backlinks acquired, Reddit presence established.</li>
+              <li><strong>Option B:</strong> 12 comparison pages live, advanced schema + technical optimization, 10 blog posts published, 2 PR articles distributed, first comparison video live, 30&ndash;40 backlinks acquired, community setup completed.</li>
+            </ul>
+          </article>
+
+          <article class="bns-timeline-card">
+            <h3 class="bns-subsection-title">Month 3: First Results</h3>
+            <ul class="bns-simple-list">
+              <li>LLM visibility tests show MaxMyCloud appearing in competitor comparison queries.</li>
+              <li>Rankings improving for 40&ndash;150 keywords.</li>
+              <li>Organic traffic increases 30&ndash;50% over baseline.</li>
+              <li>Reddit and community engagement generate referral traffic.</li>
+            </ul>
+          </article>
+
+          <article class="bns-timeline-card">
+            <h3 class="bns-subsection-title">Months 4&ndash;6: Acceleration (Optional)</h3>
+            <ul class="bns-simple-list">
+              <li>Consistent LLM mentions across ChatGPT, Gemini, and Perplexity.</li>
+              <li>Top 10 rankings for primary keywords.</li>
+              <li>Organic traffic grows to 2&ndash;3x the original baseline.</li>
+              <li>MaxMyCloud established as a credible alternative to all 6 primary competitors.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="bns-callout" aria-label="LLM visibility guarantee">
+        <h2 class="bns-section-heading">LLM Visibility Guarantee</h2>
+        <p class="bns-callout-body">
+          If MaxMyCloud does not appear in AI search results (ChatGPT, Gemini, or Perplexity) for at least three competitor
+          comparison queries by the end of Month 4, <strong>Month 5 retainer is free.</strong>
+        </p>
+      </section>
+
+      <section class="bns-exclusions" aria-label="What is not included">
+        <h2 class="bns-section-heading">What&rsquo;s Not Included (Available as Add-Ons)</h2>
+        <ul class="bns-simple-list">
+          <li>Paid advertising (Google Ads, Reddit Ads, LinkedIn Ads).</li>
+          <li>Dedicated landing page builds beyond comparison pages.</li>
+          <li>Email marketing campaigns.</li>
+          <li>Ongoing social media management beyond LinkedIn thought leadership.</li>
+          <li>Translation services for international markets.</li>
+        </ul>
+      </section>
+
+      <section class="bns-cta-final" aria-label="Next steps">
+        <p class="bns-section-lead">
+          Ready to dominate AI search results and own the &ldquo;Snowflake cost optimization&rdquo; conversation?
+        </p>
+        <button class="bns-button bns-button--primary" type="button">
+          Schedule a 15-minute call
+        </button>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

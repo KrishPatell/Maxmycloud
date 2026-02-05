@@ -1,0 +1,466 @@
+{
+  "metadata": {
+    "url": "https://maxmycloud.com/",
+    "extracted_date": "2025-01-01",
+    "purpose": "Structured content data for LLM-based redesign"
+  },
+  "brand": {
+    "name": "MaxMyCloud",
+    "tagline": "Reduce Your Snowflake Costs by 30%",
+    "tagline_secondary": "Snowflake Automation & Cloud Optimization Powered by AI",
+    "description": "MaxMyCloud specializes in Snowflake cost optimization. Our proven strategies and expert analysis help businesses dramatically reduce their cloud data warehouse expenses while maintaining peak performance.",
+    "guarantee": "Cut Your Cloud Spend by at least 20% — Or You Don't Pay"
+  },
+  "navigation": {
+    "items": [
+      { "label": "Home", "href": "#home", "section": "hero" },
+      { "label": "Services", "href": "#services", "section": "services" },
+      { "label": "Pricing", "href": "#pricing", "section": "pricing" },
+      { "label": "Blog", "href": "#blog", "section": "blog" },
+      { "label": "Contact", "href": "#contact", "section": "contact" }
+    ]
+  },
+  "hero": {
+    "headline": "Reduce Your Snowflake Costs by 30%",
+    "subheadline": "MaxMyCloud specializes in Snowflake cost optimization. Our proven strategies and expert analysis help businesses dramatically reduce their cloud data warehouse expenses while maintaining peak performance.",
+    "ctas": [
+      {
+        "text": "Start Your Free 30 Day Trial",
+        "type": "primary",
+        "action": "modal",
+        "modal": "free_trial"
+      },
+      {
+        "text": "Book a Demo",
+        "type": "secondary",
+        "action": "calendly",
+        "url": "https://calendly.com/raj-aiyer-maxmycloud/30min"
+      }
+    ],
+    "trust_indicators": [
+      "No credit card required",
+      "Setup in under 30 minutes",
+      "Trusted by Enterprise Customers",
+      "Cut Your Cloud Spend by at least 20% — Or You Don't Pay"
+    ]
+  },
+  "services": {
+    "title": "Our Snowflake Optimization Services",
+    "subtitle": "Comprehensive cost reduction strategies tailored to your Snowflake environment",
+    "items": [
+      {
+        "id": 1,
+        "name": "Cost Analysis & Audit",
+        "icon": "chart_bars",
+        "description": "Deep dive into your Snowflake usage patterns to identify cost optimization opportunities and wasteful spending."
+      },
+      {
+        "id": 2,
+        "name": "Query Optimization",
+        "icon": "lightning",
+        "description": "Optimize your SQL queries and data models to reduce compute costs while improving performance."
+      },
+      {
+        "id": 3,
+        "name": "Warehouse Right-Sizing",
+        "icon": "warehouse",
+        "description": "Right-size your virtual warehouses based on actual workload requirements to eliminate over-provisioning."
+      },
+      {
+        "id": 4,
+        "name": "Auto-Scaling Setup",
+        "icon": "scaling",
+        "description": "Implement intelligent auto-scaling policies to automatically adjust resources based on demand."
+      },
+      {
+        "id": 5,
+        "name": "Storage Optimization",
+        "icon": "storage",
+        "description": "Optimize data storage strategies, implement data lifecycle policies, and reduce unnecessary data retention."
+      },
+      {
+        "id": 6,
+        "name": "Ongoing Monitoring",
+        "icon": "monitor",
+        "description": "Continuous monitoring and alerting to prevent cost overruns and maintain optimal performance."
+      }
+    ]
+  },
+  "why_choose_us": {
+    "title": "Why Choose MaxMyCloud for Snowflake Optimization?",
+    "description": "We specialize exclusively in Snowflake cost optimization and have helped companies reduce their monthly Snowflake bills by 25-30% without sacrificing performance or functionality.",
+    "key_points": [
+      {
+        "title": "Snowflake Certified Experts",
+        "description": "Our team holds advanced Snowflake certifications and deep platform expertise"
+      },
+      {
+        "title": "Guaranteed Results",
+        "description": "We guarantee at least 20% cost reduction or you don't pay"
+      },
+      {
+        "title": "No Performance Impact",
+        "description": "All optimizations maintain or improve query performance and user experience"
+      }
+    ],
+    "statistics": [
+      {
+        "value": "60%",
+        "label": "Storage Cost Savings"
+      },
+      {
+        "value": "24/7",
+        "label": "Global Support"
+      },
+      {
+        "value": "30%",
+        "label": "Average Cost Reduction"
+      },
+      {
+        "value": "2 Hours",
+        "label": "Average Implementation"
+      }
+    ]
+  },
+  "pricing": {
+    "title": "Simple, Transparent Pricing",
+    "subtitle": "Choose the plan that fits your Snowflake optimization needs",
+    "guarantee": "All plans include our 20% savings guarantee. If we don't reduce your Snowflake costs by at least 20%, you don't pay",
+    "plans": [
+      {
+        "id": "starter",
+        "name": "Starter",
+        "price": 0,
+        "currency": "USD",
+        "period": "month",
+        "popular": false,
+        "features": [
+          "Snowflake account (1)",
+          "Realtime query monitoring (20 emails/month)",
+          "Realtime warehouse optimization",
+          "Storage optimization",
+          "Serverless optimization",
+          "Identify unused resources that consume credits",
+          "Complete computing cost analysis"
+        ],
+        "cta": {
+          "text": "Get Started",
+          "modal": "starter_package"
+        }
+      },
+      {
+        "id": "professional",
+        "name": "Professional",
+        "price": 399,
+        "currency": "USD",
+        "period": "month",
+        "popular": false,
+        "features": [
+          "Everything in Starter",
+          "Snowflake accounts (8)",
+          "Realtime query monitoring (200 emails/month)",
+          "Full implementation support",
+          "Warehouse utilization analysis",
+          "Storage optimization",
+          "Cost optimization recommendation",
+          "30 days post-implementation support"
+        ],
+        "cta": {
+          "text": "Get Started",
+          "modal": "professional_package"
+        }
+      },
+      {
+        "id": "enterprise",
+        "name": "Enterprise",
+        "price": null,
+        "price_display": "Tailored pricing",
+        "currency": "USD",
+        "period": "month",
+        "popular": true,
+        "features": [
+          "Everything in Professional",
+          "Unlimited Snowflake accounts",
+          "Realtime query monitoring (unlimited alerts)",
+          "Multi-account optimization",
+          "Custom monitoring dashboard",
+          "Enterprise SSO integration",
+          "Private link",
+          "Quarterly optimization reviews",
+          "AI-powered query optimization (beta)",
+          "Priority support",
+          "Training for your team"
+        ],
+        "cta": {
+          "text": "Get Started",
+          "modal": "enterprise_package"
+        }
+      }
+    ]
+  },
+  "blog": {
+    "title": "Snowflake Optimization Blog",
+    "subtitle": "Expert tips, best practices, and proven strategies to reduce your Snowflake costs",
+    "cta": {
+      "text": "Want personalized optimization advice for your Snowflake environment?",
+      "button": "Schedule a Free Consultation",
+      "action": "calendly",
+      "url": "https://calendly.com/raj-aiyer-maxmycloud/30min"
+    },
+    "articles": [
+      {
+        "id": 1,
+        "title": "Auto-Suspend: The Quick Win for Snowflake Cost Savings",
+        "category": "WAREHOUSE OPTIMIZATION",
+        "read_time": "5 min read",
+        "description": "Setting aggressive auto-suspend timeouts (60 seconds or less) can reduce idle warehouse costs by up to 40%. Learn how to configure this without impacting performance."
+      },
+      {
+        "id": 2,
+        "title": "The Power of Clustering Keys: Reduce Scan Costs by 70%",
+        "category": "QUERY OPTIMIZATION",
+        "read_time": "7 min read",
+        "description": "Properly configured clustering keys can dramatically reduce the amount of data scanned per query. Discover which tables benefit most from clustering."
+      },
+      {
+        "id": 3,
+        "title": "Time Travel: Hidden Storage Costs You're Probably Paying",
+        "category": "STORAGE OPTIMIZATION",
+        "read_time": "6 min read",
+        "description": "The default 1-day Time Travel setting may be costing you thousands in storage. Learn how to optimize retention periods based on your actual needs."
+      },
+      {
+        "id": 4,
+        "title": "Right-Sizing Warehouses: When Bigger Isn't Better",
+        "category": "WAREHOUSE SIZING",
+        "read_time": "8 min read"
+      },
+      {
+        "id": 5,
+        "title": "Eliminate Result Set Caching Misses with Query Standardization",
+        "category": "QUERY PATTERNS",
+        "read_time": "5 min read"
+      },
+      {
+        "id": 6,
+        "title": "Optimize COPY Commands: Load Data 3x Faster, Use 50% Fewer Credits",
+        "category": "DATA LOADING",
+        "read_time": "9 min read"
+      },
+      {
+        "id": 7,
+        "title": "Materialized Views vs. Tables: When to Use Each",
+        "category": "TABLE DESIGN",
+        "read_time": "7 min read"
+      },
+      {
+        "id": 8,
+        "title": "Multi-Cluster Warehouses: Avoid Paying for Unused Clusters",
+        "category": "MULTI-CLUSTER",
+        "read_time": "6 min read"
+      },
+      {
+        "id": 9,
+        "title": "Fail-Safe Storage: The Cost You Can't Disable (But Can Minimize)",
+        "category": "DATA RETENTION",
+        "read_time": "5 min read"
+      },
+      {
+        "id": 10,
+        "title": "Stop Using SELECT *: The Simple Fix That Cuts Query Costs",
+        "category": "QUERY OPTIMIZATION",
+        "read_time": "4 min read"
+      },
+      {
+        "id": 11,
+        "title": "Secure Data Sharing: Free Data Transfer That Saves on ETL",
+        "category": "DATA SHARING",
+        "read_time": "6 min read"
+      },
+      {
+        "id": 12,
+        "title": "Resource Monitors: Your First Line of Defense Against Runaway Costs",
+        "category": "MONITORING",
+        "read_time": "5 min read"
+      },
+      {
+        "id": 13,
+        "title": "Dedicated Warehouses: Isolate Workloads to Control Costs",
+        "category": "WAREHOUSE DESIGN",
+        "read_time": "8 min read"
+      },
+      {
+        "id": 14,
+        "title": "Snowflake's Automatic Compression: Trust But Verify",
+        "category": "DATA COMPRESSION",
+        "read_time": "7 min read"
+      },
+      {
+        "id": 15,
+        "title": "Query Profile Analysis: Find Your Most Expensive Queries in Minutes",
+        "category": "QUERY PROFILING",
+        "read_time": "6 min read"
+      },
+      {
+        "id": 16,
+        "title": "JSON in Snowflake: Flatten for Performance, Keep VARIANT for Flexibility",
+        "category": "SEMI-STRUCTURED DATA",
+        "read_time": "8 min read"
+      },
+      {
+        "id": 17,
+        "title": "Snowflake Tasks: Schedule Wisely to Avoid Constant Compute",
+        "category": "STREAMS & TASKS",
+        "read_time": "7 min read"
+      },
+      {
+        "id": 18,
+        "title": "Search Optimization Service: When the Cost Pays for Itself",
+        "category": "SEARCH OPTIMIZATION",
+        "read_time": "6 min read"
+      },
+      {
+        "id": 19,
+        "title": "Snowpipe: Micro-Batch Loading for Lower Credit Consumption",
+        "category": "DATA PIPELINES",
+        "read_time": "5 min read"
+      },
+      {
+        "id": 20,
+        "title": "Regional Data Transfer: The Hidden Cost of Cross-Region Queries",
+        "category": "ACCOUNT MANAGEMENT",
+        "read_time": "6 min read"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Ready to Reduce Your Snowflake Costs?",
+    "subtitle": "Get a free cost analysis and see exactly how much you can save on your Snowflake bill",
+    "benefits": [
+      {
+        "icon": "⚡",
+        "title": "Setup in Minutes",
+        "description": "Connect your Snowflake account and start seeing savings within hours. No complex configuration required."
+      },
+      {
+        "icon": "🔒",
+        "title": "Enterprise Security",
+        "description": "Your data stays where it belongs—securely in your Snowflake account. With Azure, Okta, and Snowflake OAuth integration plus optional Private Link, we deliver seamless access without ever moving your data."
+      },
+      {
+        "icon": "🛟",
+        "title": "24/7 Support",
+        "description": "Our team of Snowflake experts is available around the clock to help you maximize your savings."
+      }
+    ],
+    "form": {
+      "action": "https://formspree.io/f/xvgqlgyo",
+      "method": "POST",
+      "fields": [
+        {
+          "name": "company",
+          "label": "Company Name",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "email",
+          "label": "Email",
+          "type": "email",
+          "required": true,
+          "validation": "business_email"
+        },
+        {
+          "name": "spend",
+          "label": "Yearly Snowflake Spend",
+          "type": "select",
+          "required": false,
+          "options": [
+            "Under $200K",
+            "$200K – $500K",
+            "$500K – 1M",
+            "$1M – $5M",
+            "$5M+"
+          ]
+        },
+        {
+          "name": "usage",
+          "label": "Tell us about your Snowflake usage",
+          "type": "textarea",
+          "required": false
+        }
+      ],
+      "submit_text": "Get My Free Cost Analysis"
+    }
+  },
+  "forms": {
+    "free_trial": {
+      "trigger": "Start Your Free 30 Day Trial",
+      "fields": [
+        { "name": "name", "label": "Name", "type": "text", "required": true },
+        { "name": "email", "label": "Company Email", "type": "email", "required": true, "validation": "business_email" },
+        { "name": "message", "label": "Message", "type": "textarea", "required": true }
+      ],
+      "action": "https://formspree.io/f/xvgqlgyo",
+      "hidden_fields": { "form_type": "free_trial" },
+      "success_message": "Thank you for your message. We will be in touch within the same business day to set up your free trial."
+    },
+    "starter_package": {
+      "trigger": "Get Started (Starter plan)",
+      "fields": [
+        { "name": "name", "label": "Name", "type": "text", "required": true },
+        { "name": "email", "label": "Company Email", "type": "email", "required": true, "validation": "business_email" },
+        { "name": "message", "label": "Message", "type": "textarea", "required": true }
+      ],
+      "action": "https://formspree.io/f/xvgqlgyo",
+      "hidden_fields": { "form_type": "starter_package" }
+    },
+    "professional_package": {
+      "trigger": "Get Started (Professional plan)",
+      "fields": [
+        { "name": "name", "label": "Name", "type": "text", "required": true },
+        { "name": "email", "label": "Company Email", "type": "email", "required": true, "validation": "business_email" },
+        { "name": "message", "label": "Message", "type": "textarea", "required": true }
+      ],
+      "action": "https://formspree.io/f/xvgqlgyo",
+      "hidden_fields": { "form_type": "professional_package" }
+    },
+    "enterprise_package": {
+      "trigger": "Get Started (Enterprise plan)",
+      "fields": [
+        { "name": "name", "label": "Name", "type": "text", "required": true },
+        { "name": "email", "label": "Company Email", "type": "email", "required": true, "validation": "business_email" },
+        { "name": "message", "label": "Message", "type": "textarea", "required": true }
+      ],
+      "action": "https://formspree.io/f/xvgqlgyo",
+      "hidden_fields": { "form_type": "enterprise_package" }
+    }
+  },
+  "footer": {
+    "company_name": "MaxMyCloud",
+    "description": "Specializing in Snowflake cost optimization. We help reduce your cloud data warehouse spend by over 30%.",
+    "copyright": "© 2025 MaxMyCloud. All rights reserved. Snowflake cost optimization specialists."
+  },
+  "integrations": {
+    "formspree": {
+      "endpoint": "https://formspree.io/f/xvgqlgyo",
+      "method": "POST"
+    },
+    "calendly": {
+      "url": "https://calendly.com/raj-aiyer-maxmycloud/30min",
+      "popup_size": { "width": 800, "height": 600 }
+    },
+    "tawk_to": {
+      "account_id": "689e79c93e106b19234f4a48"
+    },
+    "leadsy": {
+      "script_url": "https://r2.leadsy.ai/tag.js",
+      "project_id": "156g9c8oHswefsTCB"
+    }
+  },
+  "seo": {
+    "title": "MaxMyCloud — Snowflake Automation & Cloud Optimization Powered by AI",
+    "og_title": "MaxMyCloud — Snowflake Automation & Cloud Optimization Powered by AI",
+    "og_type": "website"
+  }
+}

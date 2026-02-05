@@ -42,6 +42,32 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     /**
+     * Update URL to /calculator/results so analytics can track completions
+     */
+    function updateResultsUrl() {
+        if (!window.history || !window.history.pushState) return;
+        try {
+            const { pathname, search } = window.location;
+            let newPath = pathname;
+
+            if (pathname.endsWith('/calculator') || pathname.endsWith('/calculator/')) {
+                newPath = '/calculator/results';
+            } else if (!pathname.endsWith('/calculator/results')) {
+                const trimmed = pathname.replace(/\/$/, '');
+                newPath = `${trimmed}/results`;
+            }
+
+            const newUrl = `${newPath}${search || ''}`;
+            if (newUrl !== `${pathname}${search || ''}`) {
+                window.history.pushState(null, '', newUrl);
+            }
+        } catch (e) {
+            // Fail silently if running in an embedded/unsupported context
+            console.warn('Unable to update results URL', e);
+        }
+    }
+
+    /**
      * Initialize event listeners
      */
     function init() {
@@ -104,6 +130,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Format spend input with commas
         monthlySpendInput.addEventListener('blur', formatSpendInput);
+
+        // PDF request form (results CTA)
+        const pdfForm = document.getElementById('pdf-request-form');
+        if (pdfForm) {
+            pdfForm.addEventListener('submit', handlePdfRequestSubmit);
+        }
     }
 
     /**
@@ -364,6 +396,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Scroll to results
         resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+        // Update URL so completed runs land on /calculator/results
+        updateResultsUrl();
     }
 
     /**
@@ -435,7 +470,61 @@ document.addEventListener('DOMContentLoaded', function() {
         announcement.textContent = text;
     }
 
-    // Email capture modal + submission logic removed.\n*** End Patch"}】 ***!
+    /**
+     * Handle inline PDF request form submission
+     */
+    async function handlePdfRequestSubmit(event) {
+        event.preventDefault();
+
+        const emailInput = document.getElementById('pdf-email');
+        if (!emailInput) return;
+
+        // Validate business email
+        const result = validator.validate('email', emailInput.value);
+        if (!result.valid) {
+            validator.showError(emailInput, result.error);
+            return;
+        } else {
+            validator.clearError(emailInput);
+        }
+
+        // Build payload for Formspree
+        const payload = {
+            email: emailInput.value,
+            monthlySpend: calculationResults ? calculationResults.currentSpend : undefined,
+            estimatedSavings: calculationResults ? calculationResults.monthlySavings : undefined,
+            savingsRate: calculationResults ? calculationResults.savingsRate : undefined,
+            _subject: 'New Calculator Lead - PDF Report Request'
+        };
+
+        try {
+            const response = await fetch('https://formspree.io/f/mnjbavdy', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            });
+
+            if (response.ok) {
+                // Simple success state: disable form and update button text
+                emailInput.disabled = true;
+                const button = event.target.querySelector('button[type="submit"]');
+                if (button) {
+                    button.textContent = 'Report on its way ✔';
+                    button.disabled = true;
+                }
+            } else {
+                const errorText = 'There was an issue sending your report. Please try again.';
+                const errorEl = document.getElementById('pdf-email-error');
+                if (errorEl) errorEl.textContent = errorText;
+            }
+        } catch (err) {
+            const errorEl = document.getElementById('pdf-email-error');
+            if (errorEl) errorEl.textContent = 'Network error. Please try again in a moment.';
+        }
+    }
 
     /**
      * Format number with commas

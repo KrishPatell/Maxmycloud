@@ -232,35 +232,35 @@
                             <!-- Populated by JS -->
                         </div>
 
-                    <!-- Inline CTA: Customized PDF Report -->
-                    <div class="results-cta">
-                        <h3>Get your customized PDF report</h3>
-                        <p class="results-cta-sub">
-                            Includes your savings breakdown plus a Snowflake best-practices guide.
-                        </p>
-                        <form id="pdf-request-form" class="results-cta-form" novalidate>
-                            <div class="form-group">
-                                <label for="pdf-email" class="form-label">Work email</label>
-                                <input
-                                    type="email"
-                                    id="pdf-email"
-                                    name="email"
-                                    placeholder="you@company.com"
-                                    required
-                                    aria-required="true"
-                                    aria-describedby="pdf-email-helper"
-                                >
-                                <p id="pdf-email-helper" class="input-helper">
-                                    Business email only. No Gmail, Yahoo, etc.
-                                </p>
-                                <div class="error-message" id="pdf-email-error" role="alert"></div>
+                        <!-- Lead Gate: Blurred Detailed Breakdown -->
+                        <div class="locked-section">
+                            <div class="blur-overlay">
+                                <h3>Detailed 90-Day Savings Roadmap</h3>
+                                <div class="placeholder-content">
+                                    <p><strong>Month 1:</strong> Infrastructure Right-Sizing</p>
+                                    <p>• Consolidate underutilized warehouses</p>
+                                    <p>• Implement auto-suspend policies</p>
+                                    <p>• Expected savings: 15-20%</p>
+                                    <br>
+                                    <p><strong>Month 2:</strong> Auto-Suspend Optimization</p>
+                                    <p>• Fine-tune suspend timings</p>
+                                    <p>• Implement usage monitoring</p>
+                                    <p>• Expected savings: Additional 10-15%</p>
+                                    <br>
+                                    <p><strong>Month 3:</strong> Query Performance Tuning</p>
+                                    <p>• Optimize expensive queries</p>
+                                    <p>• Implement clustering keys</p>
+                                    <p>• Expected savings: Additional 5-10%</p>
+                                    <div style="height: 150px; background: linear-gradient(180deg, #f0f0f0 0%, #e0e0e0 100%); margin-top: 20px; border-radius: 8px;"></div>
+                                </div>
                             </div>
-                            <button type="submit" class="btn-primary btn-full">
-                                Email me my PDF
-                            </button>
-                            <p class="results-cta-trust">🔒 Your data is secure. No spam.</p>
-                        </form>
-                    </div>
+                            <div class="unlock-overlay">
+                                <button class="btn-primary btn-large" id="btn-unlock-report">
+                                    🔓 Unlock Full PDF Report
+                                </button>
+                                <p class="unlock-subtitle">Enter your work email to receive the complete analysis</p>
+                            </div>
+                        </div>
 
                         <div class="results-actions">
                             <a href="https://calendly.com/maxmycloud/30min" class="btn-secondary" target="_blank">
@@ -280,6 +280,90 @@
             </div>
         </div>
     </section>
+
+    <!-- Email Capture Modal -->
+    <div id="email-modal" class="modal hidden" role="dialog" aria-labelledby="modal-title" aria-modal="true">
+        <div class="modal-backdrop" aria-hidden="true"></div>
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close modal" type="button">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
+
+            <h2 id="modal-title" class="modal-title">Get Your Detailed Savings Report</h2>
+            <p class="modal-subtitle">We'll send you a personalized PDF breakdown including:</p>
+
+            <ul class="modal-benefits">
+                <li>✓ Line-item savings opportunities by category</li>
+                <li>✓ 90-day implementation roadmap</li>
+                <li>✓ Expected ROI timeline</li>
+                <li>✓ Custom recommendations for your setup</li>
+            </ul>
+
+            <form id="email-capture-form" novalidate>
+                <div class="form-group">
+                    <label for="report-name" class="form-label">Full Name*</label>
+                    <input
+                        type="text"
+                        id="report-name"
+                        name="name"
+                        required
+                        aria-required="true"
+                        placeholder="John Smith"
+                    >
+                    <div class="error-message" id="name-error" role="alert"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="report-email" class="form-label">Business Email*</label>
+                    <input
+                        type="email"
+                        id="report-email"
+                        name="email"
+                        required
+                        aria-required="true"
+                        aria-describedby="email-helper"
+                        placeholder="john@company.com"
+                    >
+                    <p id="email-helper" class="input-helper">Please use your work email (no Gmail, Yahoo, etc.)</p>
+                    <div class="error-message" id="email-error" role="alert"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="report-company" class="form-label">Company Name</label>
+                    <input
+                        type="text"
+                        id="report-company"
+                        name="company"
+                        placeholder="Acme Corp"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label class="checkbox-option">
+                        <input type="checkbox" name="consultation" value="yes">
+                        <span class="checkbox-label">I'd like a 30-min consultation</span>
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-primary btn-full" id="btn-submit-report">
+                    Send My Report →
+                </button>
+
+                <p class="modal-trust">🔒 Your data is secure. No spam.</p>
+            </form>
+
+            <!-- Success State -->
+            <div id="email-success" class="email-success hidden">
+                <div class="success-icon">✓</div>
+                <h3>Report Sent!</h3>
+                <p>Check your inbox for your detailed Snowflake savings report.</p>
+                <p class="success-sub">We'll be in touch within 24 hours to discuss your optimization strategy.</p>
+                <button type="button" class="btn-primary" id="btn-close-success">Close</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Chart.js Library -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>

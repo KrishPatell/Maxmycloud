@@ -1,0 +1,282 @@
+{
+  "metadata": {
+    "name": "MaxMyCloud Design System",
+    "version": "1.0",
+    "extracted_date": "2025-01-01"
+  },
+  "colors": {
+    "primary": {
+      "background": {
+        "value": "#0f172a",
+        "name": "slate-900",
+        "usage": "Main page background"
+      },
+      "secondary_background": {
+        "value": "#1e293b",
+        "name": "slate-800",
+        "usage": "Cards, header, footer"
+      },
+      "card_background": {
+        "value": "#1e293b",
+        "name": "slate-800",
+        "usage": "Card components"
+      },
+      "border": {
+        "value": "#334155",
+        "name": "slate-700",
+        "usage": "Borders, dividers"
+      }
+    },
+    "text": {
+      "primary": {
+        "value": "#e2e8f0",
+        "name": "slate-200",
+        "usage": "Main text content"
+      },
+      "secondary": {
+        "value": "#cbd5e1",
+        "name": "slate-300",
+        "usage": "Secondary text"
+      },
+      "muted": {
+        "value": "#94a3b8",
+        "name": "slate-400",
+        "usage": "Muted text, placeholders"
+      }
+    },
+    "accent": {
+      "blue": {
+        "value": "#3b82f6",
+        "name": "blue-500",
+        "usage": "Primary accent color"
+      },
+      "purple": {
+        "value": "#8b5cf6",
+        "name": "purple-500",
+        "usage": "Secondary accent color"
+      },
+      "gradient": {
+        "from": "#1e40af",
+        "from_name": "blue-700",
+        "to": "#7c3aed",
+        "to_name": "purple-600",
+        "direction": "135deg",
+        "usage": "Hero background, gradient accents"
+      }
+    },
+    "semantic": {
+      "success": {
+        "value": "#10b981",
+        "name": "green-500",
+        "usage": "Success states, positive indicators"
+      },
+      "warning": {
+        "value": "#f59e0b",
+        "name": "amber-500",
+        "usage": "Warning states"
+      },
+      "error": {
+        "value": "#ef4444",
+        "name": "red-500",
+        "usage": "Error states, validation errors"
+      }
+    },
+    "neutral": {
+      "white": {
+        "value": "#ffffff",
+        "usage": "Text on dark backgrounds, buttons"
+      }
+    }
+  },
+  "typography": {
+    "font_family": {
+      "primary": "Inter",
+      "fallback": "sans-serif",
+      "source": "Google Fonts",
+      "weights": [300, 400, 500, 600, 700]
+    },
+    "scale": {
+      "xs": { "size": "0.75rem", "line_height": "1rem" },
+      "sm": { "size": "0.875rem", "line_height": "1.25rem" },
+      "base": { "size": "1rem", "line_height": "1.5rem" },
+      "lg": { "size": "1.125rem", "line_height": "1.75rem" },
+      "xl": { "size": "1.25rem", "line_height": "1.75rem" },
+      "2xl": { "size": "1.5rem", "line_height": "2rem" },
+      "3xl": { "size": "1.875rem", "line_height": "2.25rem" },
+      "4xl": { "size": "2.25rem", "line_height": "2.5rem" },
+      "5xl": { "size": "3rem", "line_height": "1" },
+      "6xl": { "size": "3.75rem", "line_height": "1" }
+    },
+    "headings": {
+      "h1": { "size": "text-4xl to text-6xl", "weight": 700, "usage": "Hero headlines" },
+      "h2": { "size": "text-3xl to text-4xl", "weight": 600, "usage": "Section titles" },
+      "h3": { "size": "text-2xl", "weight": 600, "usage": "Subsection titles" },
+      "h4": { "size": "text-xl", "weight": 600, "usage": "Card titles" }
+    },
+    "body": {
+      "default": { "size": "text-base", "weight": 400 },
+      "large": { "size": "text-lg to text-xl", "weight": 400 },
+      "small": { "size": "text-sm", "weight": 400, "color": "slate-400" }
+    }
+  },
+  "spacing": {
+    "scale": {
+      "xs": "0.25rem",
+      "sm": "0.5rem",
+      "md": "1rem",
+      "lg": "1.5rem",
+      "xl": "2rem",
+      "2xl": "3rem",
+      "3xl": "4rem",
+      "4xl": "5rem"
+    },
+    "section": {
+      "vertical": "py-20",
+      "horizontal": "px-4 md:px-8 lg:px-16"
+    },
+    "card": {
+      "padding": "p-8",
+      "gap": "gap-6"
+    }
+  },
+  "borders": {
+    "radius": {
+      "sm": "rounded-lg",
+      "md": "rounded-xl",
+      "lg": "rounded-2xl",
+      "full": "rounded-full"
+    },
+    "width": {
+      "thin": "1px",
+      "medium": "2px",
+      "thick": "4px"
+    },
+    "color": "slate-700"
+  },
+  "shadows": {
+    "sm": "shadow-sm",
+    "md": "shadow-md",
+    "lg": "shadow-lg",
+    "xl": "shadow-xl",
+    "hover": "shadow-blue-500/20",
+    "description": "Subtle shadows with blue tint on hover"
+  },
+  "effects": {
+    "hover": {
+      "card": {
+        "transform": "translateY(-5px)",
+        "transition": "0.3s ease",
+        "shadow": "shadow-lg shadow-blue-500/20"
+      },
+      "button": {
+        "transform": "scale(1.05)",
+        "transition": "0.2s ease"
+      }
+    },
+    "transitions": {
+      "default": "0.3s ease",
+      "fast": "0.2s ease",
+      "slow": "0.5s ease"
+    }
+  },
+  "animations": {
+    "snowflake": {
+      "type": "falling",
+      "duration": "8-14 seconds",
+      "variations": ["shake", "fade"],
+      "description": "Continuous falling snowflake animation throughout page"
+    },
+    "smooth_scroll": {
+      "behavior": "smooth",
+      "duration": "500ms"
+    }
+  },
+  "components": {
+    "button": {
+      "primary": {
+        "background": "white",
+        "text_color": "blue-500",
+        "padding": "px-6 py-3",
+        "border_radius": "rounded-lg",
+        "font_weight": 600,
+        "hover": "scale(1.05)"
+      },
+      "secondary": {
+        "background": "transparent",
+        "border": "2px solid white",
+        "text_color": "white",
+        "padding": "px-6 py-3",
+        "border_radius": "rounded-lg",
+        "font_weight": 600,
+        "hover": "scale(1.05)"
+      }
+    },
+    "card": {
+      "background": "slate-800",
+      "padding": "p-8",
+      "border_radius": "rounded-xl",
+      "border": "border border-slate-700",
+      "hover": {
+        "transform": "translateY(-5px)",
+        "shadow": "shadow-lg shadow-blue-500/20"
+      }
+    },
+    "modal": {
+      "backdrop": {
+        "background": "rgba(0, 0, 0, 0.5)",
+        "z_index": 50
+      },
+      "content": {
+        "background": "slate-800",
+        "border_radius": "rounded-xl",
+        "padding": "p-8",
+        "max_width": "max-w-2xl"
+      }
+    },
+    "form": {
+      "input": {
+        "background": "slate-700",
+        "border": "border border-slate-600",
+        "border_radius": "rounded-lg",
+        "padding": "px-4 py-2",
+        "text_color": "slate-200",
+        "focus": {
+          "border_color": "blue-500",
+          "ring": "ring-2 ring-blue-500/20"
+        }
+      }
+    }
+  },
+  "layout": {
+    "container": {
+      "max_width": "max-w-7xl",
+      "margin": "mx-auto",
+      "padding": "px-4 md:px-8 lg:px-16"
+    },
+    "grid": {
+      "services": "grid-cols-1 md:grid-cols-2 lg:grid-cols-3",
+      "blog": "grid-cols-1 md:grid-cols-2 lg:grid-cols-3",
+      "pricing": "grid-cols-1 md:grid-cols-3",
+      "gap": "gap-6"
+    },
+    "breakpoints": {
+      "mobile": "< 768px",
+      "tablet": "768px - 1024px",
+      "desktop": "> 1024px"
+    }
+  },
+  "logo": {
+    "type": "SVG",
+    "colors": {
+      "gradient": ["#3b82f6", "#06b6d4", "#8b5cf6"],
+      "optimization_arrows": ["orange", "red"],
+      "performance_indicator": "circle"
+    },
+    "elements": [
+      "hexagonal cloud layers",
+      "optimization arrows",
+      "data flow lines",
+      "performance indicator circle"
+    ]
+  }
+}
