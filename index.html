@@ -85,79 +85,87 @@
                             </button>
                         </div>
 
-                        <!-- Step 2: Infrastructure Details (SLIDERS - GEMINI SPEC) -->
-                        <div class="calc-step" data-step="2">
+                        <!-- Step 2: Infrastructure Details (3x2 GRID) -->
+                        <div class="calc-step calc-step-infra" data-step="2">
                             <h2 class="step-title">Configure Your Infrastructure</h2>
                             <p class="step-subtitle">Help us understand your Snowflake environment</p>
 
-                            <!-- Number of Warehouses -->
-                            <div class="form-group">
-                                <label for="warehouse-count" class="form-label">Number of Active Warehouses</label>
-                                <input type="number" id="warehouse-count" name="warehouseCount"
-                                       min="1" max="100" value="5" class="input-field" />
-                            </div>
-
-                            <!-- Workload Type -->
-                            <div class="form-group">
-                                <label for="workload-type" class="form-label">Primary Workload Type</label>
-                                <select id="workload-type" name="workloadType" class="input-field">
-                                    <option value="etl">ETL/Data Loading</option>
-                                    <option value="adhoc">Ad-hoc Reporting</option>
-                                    <option value="bi">BI Dashboards</option>
-                                    <option value="datascience">Data Science</option>
-                                </select>
-                            </div>
-
-                            <!-- SLIDER 1: Provisioning Level -->
-                            <div class="form-group">
-                                <label class="form-label">Provisioning Level</label>
-                                <p class="slider-helper">How do you size your warehouses?</p>
-                                <div class="slider-container">
-                                    <input type="range" id="provisioning-slider" name="provisioningLevel"
-                                           min="1" max="5" value="3" step="1" class="efficiency-slider">
-                                    <div class="slider-labels">
-                                        <span>We run lean</span>
-                                        <span id="provisioning-value" class="slider-value">3</span>
-                                        <span>Always over-provision</span>
+                            <div class="infra-grid">
+                                <!-- Row 1: Warehouses (left) | Workload Type (right) -->
+                                <div class="infra-grid-cell">
+                                    <div class="form-group">
+                                        <label for="warehouse-count" class="form-label">Number of Active Warehouses</label>
+                                        <input type="number" id="warehouse-count" name="warehouseCount"
+                                               min="1" max="100" value="5" class="input-field" />
                                     </div>
                                 </div>
-                            </div>
-
-                            <!-- SLIDER 2: Monitoring Maturity -->
-                            <div class="form-group">
-                                <label class="form-label">Monitoring Maturity</label>
-                                <p class="slider-helper">How governed is your Snowflake usage?</p>
-                                <div class="slider-container">
-                                    <input type="range" id="maturity-slider" name="maturityLevel"
-                                           min="1" max="5" value="3" step="1" class="efficiency-slider">
-                                    <div class="slider-labels">
-                                        <span>Wild West</span>
-                                        <span id="maturity-value" class="slider-value">3</span>
-                                        <span>Strictly Governed</span>
+                                <div class="infra-grid-cell">
+                                    <div class="form-group">
+                                        <label for="workload-type" class="form-label">Primary Workload Type</label>
+                                        <select id="workload-type" name="workloadType" class="input-field">
+                                            <option value="etl">ETL/Data Loading</option>
+                                            <option value="adhoc">Ad-hoc Reporting</option>
+                                            <option value="bi">BI Dashboards</option>
+                                            <option value="datascience">Data Science</option>
+                                        </select>
                                     </div>
                                 </div>
-                            </div>
 
-                            <!-- SLIDER 3: Idle Time Intensity -->
-                            <div class="form-group">
-                                <label class="form-label">Idle Time Intensity</label>
-                                <p class="slider-helper">How long before warehouses suspend?</p>
-                                <div class="slider-container">
-                                    <input type="range" id="idle-slider" name="idleIntensity"
-                                           min="1" max="5" value="3" step="1" class="efficiency-slider">
-                                    <div class="slider-labels">
-                                        <span>Instant shutoff</span>
-                                        <span id="idle-value" class="slider-value">3</span>
-                                        <span>Always on (10+ min)</span>
+                                <!-- Row 2: Provisioning (left) | Monitoring Maturity (right) -->
+                                <div class="infra-grid-cell">
+                                    <div class="form-group">
+                                        <label class="form-label">Provisioning Level</label>
+                                        <p class="slider-helper">How do you size your warehouses?</p>
+                                        <div class="slider-container">
+                                            <input type="range" id="provisioning-slider" name="provisioningLevel"
+                                                   min="1" max="5" value="3" step="1" class="efficiency-slider">
+                                            <div class="slider-labels">
+                                                <span>We run lean</span>
+                                                <span id="provisioning-value" class="slider-value">3</span>
+                                                <span>Always over-provision</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                                <div class="infra-grid-cell">
+                                    <div class="form-group">
+                                        <label class="form-label">Monitoring Maturity</label>
+                                        <p class="slider-helper">How governed is your Snowflake usage?</p>
+                                        <div class="slider-container">
+                                            <input type="range" id="maturity-slider" name="maturityLevel"
+                                                   min="1" max="5" value="3" step="1" class="efficiency-slider">
+                                            <div class="slider-labels">
+                                                <span>Wild West</span>
+                                                <span id="maturity-value" class="slider-value">3</span>
+                                                <span>Strictly Governed</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-                            <!-- Optional: Team Size -->
-                            <div class="form-group">
-                                <label for="team-size" class="form-label">Data Team Size (Optional)</label>
-                                <input type="number" id="team-size" name="teamSize"
-                                       min="1" max="500" placeholder="e.g., 15" class="input-field" />
+                                <!-- Row 3: Idle Time (left) | Team Size (right) -->
+                                <div class="infra-grid-cell">
+                                    <div class="form-group">
+                                        <label class="form-label">Idle Time Intensity</label>
+                                        <p class="slider-helper">How long before warehouses suspend?</p>
+                                        <div class="slider-container">
+                                            <input type="range" id="idle-slider" name="idleIntensity"
+                                                   min="1" max="5" value="3" step="1" class="efficiency-slider">
+                                            <div class="slider-labels">
+                                                <span>Instant shutoff</span>
+                                                <span id="idle-value" class="slider-value">3</span>
+                                                <span>Always on (10+ min)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="infra-grid-cell">
+                                    <div class="form-group">
+                                        <label for="team-size" class="form-label">Data Team Size (Optional)</label>
+                                        <input type="number" id="team-size" name="teamSize"
+                                               min="1" max="500" placeholder="e.g., 15" class="input-field" />
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="btn-group">
@@ -254,7 +262,6 @@
                                 </p>
                                 <form id="pdf-request-form" class="results-cta-form" novalidate>
                                     <div class="form-group">
-                                        <label for="pdf-email" class="form-label">Work email</label>
                                         <input
                                             type="email"
                                             id="pdf-email"
@@ -263,14 +270,15 @@
                                             required
                                             aria-required="true"
                                             aria-describedby="pdf-email-helper"
+                                            aria-label="Work email"
                                         >
                                         <p id="pdf-email-helper" class="input-helper">
-                                            Business email only. No Gmail, Yahoo, etc.
+                                            Please enter your work email.
                                         </p>
                                         <div class="error-message" id="pdf-email-error" role="alert"></div>
                                     </div>
                                     <button type="submit" class="btn-primary btn-full">
-                                        Email me my PDF
+                                        See my savings
                                     </button>
                                     <p class="results-cta-trust">🔒 Your data is secure. No spam.</p>
                                 </form>
